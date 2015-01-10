@@ -1,0 +1,35 @@
+{
+    "name": "fdevs/tag",
+    "license": "MIT",
+    "type": "library",
+    "description": "library for working with tag",
+    "homepage": "https://github.com/4devs/Tag",
+    "keywords": ["tag"],
+    "authors": [
+        {
+            "name": "Samusev Andrey",
+            "email": "andrey_simfi@list.ru",
+            "homepage": "http://andrey.4devs.io/"
+        },
+        {
+            "name": "4devs Community",
+            "homepage": "https://github.com/4devs/Tag/contributors"
+        }
+    ],
+    "require-dev": {},
+    "require": {
+        "php": ">=5.4",
+        "doctrine/collections": "~1.2",
+        "fdevs/locale": "~1.0"
+    },
+    "suggest": {
+        "doctrine/common": "to use with doctrine",
+        "doctrine/mongodb-odm": "to use with mongodb",
+        "jms/serializer": "to use with serializer",
+        "symfony/form": "to use with form",
+        "twig/twig": "use with twig"
+    },
+    "autoload": {
+        "psr-4": {"FDevs\\Tag\\": ""}
+    }
+}

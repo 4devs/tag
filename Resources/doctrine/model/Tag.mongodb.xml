@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mongo-mapping xmlns="http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                        xsi:schemaLocation="http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping
+                        http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping.xsd">
+
+    <document name="FDevs\Tag\Model\Tag" collection="tag">
+
+        <field name="id" id="true" strategy="NONE"/>
+        <field name="type" fieldName="type" type="string"/>
+        <field name="slug" fieldName="slug" type="string"/>
+        <embed-many target-document="FDevs\Locale\Model\LocaleText" field="name"/>
+        <embed-many target-document="FDevs\Locale\Model\LocaleText" field="description"/>
+
+        <indexes>
+            <index unique="true">
+                <key name="slug" order="asc"/>
+                <key name="type" order="asc"/>
+            </index>
+        </indexes>
+    </document>
+
+</doctrine-mongo-mapping>

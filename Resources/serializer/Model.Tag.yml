@@ -1,0 +1,20 @@
+FDevs\Tag\Model\Tag:
+    exclusion_policy: ALL
+    access_type: public_method
+    properties:
+        id:
+            expose: true
+            type: string
+            groups: [full, base]
+        slug:
+            expose: true
+            type: string
+            groups: [full]
+        type:
+            expose: true
+            type: string
+            groups: [full]
+        name:
+            expose: true
+            type: ArrayCollection<FDevs\Locale\Model\LocaleText>
+            groups: [full]
