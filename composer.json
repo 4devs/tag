@@ -27,6 +27,7 @@
         "doctrine/mongodb-odm": "to use with mongodb",
         "jms/serializer": "to use with serializer",
         "symfony/form": "to use with form",
+        "cocur/slugify": "to use with form",
         "twig/twig": "use with twig"
     },
     "autoload": {

@@ -11,14 +11,13 @@ interface TagManagerInterface
     public function createTag();
 
     /**
-     * find Tag By Slug And Type
+     * set Base Criteria
      *
-     * @param string $slug
-     * @param string $type
+     * @param array $criteria
      *
-     * @return TagInterface|null
+     * @return self
      */
-    public function findBySlugAndType($slug, $type);
+    public function setDefaultCriteria(array $criteria = []);
 
     /**
      * find Tag By Id
@@ -36,7 +35,7 @@ interface TagManagerInterface
      *
      * @return \Doctrine\Common\Collections\Collection|TagInterface[]
      */
-    public function findBy(array $criteria);
+    public function findBy(array $criteria = []);
 
     /**
      * get Class tag

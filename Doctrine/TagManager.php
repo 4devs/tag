@@ -34,14 +34,17 @@ class TagManager implements TagManagerInterface
     /** @var EventDispatcherInterface */
     protected $dispatcher = null;
 
+    /** @var array */
+    private $criteria = [];
+
     /**
      * init
      *
      * @param \Doctrine\Common\Persistence\ObjectManager $objectManager
      * @param string                                     $class
-     * @param EventDispatcherInterface|null              $dispatcher
+     * @param EventDispatcherInterface                   $dispatcher
      */
-    public function __construct(ObjectManager $objectManager, $class, EventDispatcherInterface $dispatcher = null)
+    public function __construct(ObjectManager $objectManager, $class, EventDispatcherInterface $dispatcher)
     {
         $this->objectManager = $objectManager;
         $this->class = $class;
@@ -59,16 +62,6 @@ class TagManager implements TagManagerInterface
         $this->flush = (boolean) $flush;
 
         return $this;
-    }
-
-    /**
-     * @param string $type
-     *
-     * @return array|TagInterface[]
-     */
-    public function findTagsByType($type)
-    {
-        return $this->findBy(['type' => $type]);
     }
 
     /**
@@ -138,16 +131,20 @@ class TagManager implements TagManagerInterface
     /**
      * {@inheritDoc}
      */
-    public function findBySlugAndType($slug, $type)
+    public function setDefaultCriteria(array $criteria = [])
     {
-        return $this->findBy(['slug' => $slug, 'type' => $type]);
+        $this->criteria = $criteria;
+
+        return $this;
     }
 
     /**
      * {@inheritDoc}
      */
-    public function findBy(array $criteria)
+    public function findBy(array $criteria = [])
     {
+        $criteria = array_merge($this->criteria, $criteria);
+
         return $this->repository->findBy($criteria, null, $this->limit, $this->offset);
     }
 

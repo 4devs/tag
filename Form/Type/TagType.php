@@ -2,6 +2,7 @@
 
 namespace FDevs\Tag\Form\Type;
 
+use FDevs\Tag\Form\EventListener\SlugFormSubscriber;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -26,7 +27,8 @@ class TagType extends AbstractType
         $builder
             ->add('type', 'choice', ['choices' => $options['type_list']])
             ->add('name', 'fdevs_translatable')
-            ->add('slug', 'text', ['required' => false]);
+            ->add('slug', 'text', ['required' => false])
+            ->addEventSubscriber(new SlugFormSubscriber());
     }
 
     /**
@@ -38,6 +40,7 @@ class TagType extends AbstractType
             ->setDefaults([
                 'type_list' => $this->typeList,
                 'data_class' => 'FDevs\Tag\Model\Tag',
+                'cascade_validation' => true,
             ])
             ->setOptional(['type_list'])
             ->addAllowedTypes(['type_list' => 'array']);

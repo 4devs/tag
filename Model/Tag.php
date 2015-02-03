@@ -5,6 +5,7 @@ namespace FDevs\Tag\Model;
 use FDevs\Locale\LocaleTextInterface;
 use FDevs\Locale\Model\LocaleText;
 use Doctrine\Common\Collections\ArrayCollection;
+use FDevs\Locale\Util\CollectionLocale;
 use FDevs\Tag\TagInterface;
 
 class Tag implements TagInterface
@@ -78,7 +79,7 @@ class Tag implements TagInterface
      */
     public function addName(LocaleTextInterface $text)
     {
-        $text->addLocaleToCollection($this->name);
+        CollectionLocale::addLocaleToCollection($this->name, $text);
 
         return $this;
     }
@@ -107,7 +108,7 @@ class Tag implements TagInterface
 
     public function addDescription(LocaleTextInterface $text)
     {
-        $text->addLocaleToCollection($this->description);
+        CollectionLocale::addLocaleToCollection($this->description, $text);
 
         return $this;
     }
