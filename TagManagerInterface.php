@@ -1,6 +1,8 @@
 <?php
 namespace FDevs\Tag;
 
+use Doctrine\Common\Collections\Collection;
+
 interface TagManagerInterface
 {
     /**
@@ -33,7 +35,7 @@ interface TagManagerInterface
      *
      * @param array $criteria
      *
-     * @return \Doctrine\Common\Collections\Collection|TagInterface[]
+     * @return array|Collection|TagInterface[]
      */
     public function findBy(array $criteria = []);
 
@@ -65,7 +67,7 @@ interface TagManagerInterface
     /**
      * get All Tags
      *
-     * @return \Doctrine\Common\Collections\Collection|TagInterface[]
+     * @return array|Collection|TagInterface[]
      */
     public function findTags();
 
