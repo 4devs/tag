@@ -3,6 +3,7 @@
 namespace FDevs\Tag;
 
 use FDevs\Locale\LocaleTextInterface;
+use Doctrine\Common\Collections\Collection;
 
 interface TagInterface
 {
@@ -25,7 +26,7 @@ interface TagInterface
     /**
      * add Name
      *
-     * @param \FDevs\Locale\LocaleTextInterface $name
+     * @param LocaleTextInterface $name
      *
      * @return self
      */
@@ -34,7 +35,7 @@ interface TagInterface
     /**
      * get name
      *
-     * @return \Doctrine\Common\Collections\Collection|\FDevs\Locale\Model\LocaleText[]
+     * @return array|Collection|LocaleTextInterface[]
      */
     public function getName();
 

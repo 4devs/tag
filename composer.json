@@ -7,8 +7,12 @@
     "keywords": ["tag"],
     "authors": [
         {
+            "name": "4devs company",
+            "homepage": "http://4devs.org"
+        },
+        {
             "name": "Samusev Andrey",
-            "email": "andrey_simfi@list.ru",
+            "email": "andrey@4devs.org",
             "homepage": "http://andrey.4devs.io/"
         },
         {
@@ -20,7 +24,7 @@
     "require": {
         "php": ">=5.4",
         "doctrine/collections": "~1.2",
-        "fdevs/locale": "~1.0"
+        "fdevs/locale": "~2.0"
     },
     "suggest": {
         "doctrine/common": "to use with doctrine",

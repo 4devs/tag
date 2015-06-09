@@ -88,7 +88,7 @@ class TagManager implements TagManagerInterface
         $class = $this->getClass();
         $tag = new $class();
         /** @var TagInterface $tag */
-        $this->dispatcher->dispatch(Events::TAG_CREATE, new TagEvent($tag));
+        $this->dispatch(Events::TAG_CREATE, $tag);
 
         return $tag;
     }
