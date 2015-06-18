@@ -10,12 +10,13 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class TagType extends AbstractType
 {
+    /** @var array */
     private $typeList = [];
 
     /**
      * @param array $typeList
      */
-    public function __construct(array $typeList)
+    public function __construct(array $typeList = [])
     {
         $this->typeList = $typeList;
     }
