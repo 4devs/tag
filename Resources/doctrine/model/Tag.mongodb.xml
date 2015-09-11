@@ -4,7 +4,7 @@
                         xsi:schemaLocation="http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping
                         http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping.xsd">
 
-    <document name="FDevs\Tag\Model\Tag" collection="tag">
+    <mapped-superclass name="FDevs\Tag\Model\Tag" collection="tag" repository-class="FDevs\Tag\Doctrine\Mongodb\TagRepository">
 
         <field name="id" id="true" strategy="NONE"/>
         <field name="type" fieldName="type" type="string"/>
@@ -18,6 +18,6 @@
                 <key name="type" order="asc"/>
             </index>
         </indexes>
-    </document>
+    </mapped-superclass>
 
 </doctrine-mongo-mapping>
