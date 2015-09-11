@@ -5,6 +5,7 @@ namespace FDevs\Tag\Doctrine;
 use Cocur\Slugify\Slugify;
 use FDevs\Tag\Event\TagEvent;
 use FDevs\Tag\Events;
+use FDevs\Tag\Exception\NotFoundException;
 use FDevs\Tag\Model\Tag;
 use FDevs\Tag\TagInterface;
 use FDevs\Tag\TagManagerInterface;
@@ -16,20 +17,17 @@ class TagManager implements TagManagerInterface
     /** @var ObjectManager */
     protected $objectManager;
 
-    /** @var string */
-    protected $class;
-
-    /** @var \Doctrine\Common\Persistence\ObjectRepository */
+    /** @var TagRepositoryInterface */
     protected $repository;
 
     /** @var bool */
     protected $flush = true;
 
     /** @var null|int */
-    protected $limit = null;
+    private $limit = null;
 
     /** @var null|int */
-    protected $offset = null;
+    private $offset = null;
 
     /** @var EventDispatcherInterface */
     protected $dispatcher = null;
@@ -41,14 +39,13 @@ class TagManager implements TagManagerInterface
      * init
      *
      * @param \Doctrine\Common\Persistence\ObjectManager $objectManager
-     * @param string                                     $class
-     * @param EventDispatcherInterface                   $dispatcher
+     * @param TagRepositoryInterface                     $repository
+     * @param EventDispatcherInterface|null              $dispatcher
      */
-    public function __construct(ObjectManager $objectManager, $class, EventDispatcherInterface $dispatcher)
+    public function __construct(ObjectManager $objectManager, TagRepositoryInterface $repository, EventDispatcherInterface $dispatcher = null)
     {
         $this->objectManager = $objectManager;
-        $this->class = $class;
-        $this->repository = $objectManager->getRepository($class);
+        $this->repository = $repository;
         $this->dispatcher = $dispatcher;
     }
 
@@ -69,7 +66,7 @@ class TagManager implements TagManagerInterface
      */
     public function getClass()
     {
-        return $this->class;
+        return $this->repository->getClassName();
     }
 
     /**
@@ -141,11 +138,14 @@ class TagManager implements TagManagerInterface
     /**
      * {@inheritDoc}
      */
-    public function findBy(array $criteria = [])
+    public function findBy(array $criteria = [], $limit = 10, $offset = 0)
     {
         $criteria = array_merge($this->criteria, $criteria);
 
-        return $this->repository->findBy($criteria, null, $this->limit, $this->offset);
+        $limit = is_int($this->limit) ? $this->limit : $limit;
+        $offset = is_int($this->offset) ? $this->offset : $offset;
+
+        return $this->repository->findBy($criteria, null, $limit, $offset);
     }
 
     /**
@@ -159,30 +159,31 @@ class TagManager implements TagManagerInterface
     /**
      * {@inheritDoc}
      */
-    public function setLimit($limit)
+    public function getBySlugAndType($slug, $type)
     {
-        $this->limit = $limit;
+        $tag = $this->repository->findOneBy(['slug' => $slug, 'type' => $type]);
+        if (!$tag) {
+            throw new NotFoundException($slug, $type);
+        }
 
-        return $this;
+        return $tag;
     }
 
     /**
      * {@inheritDoc}
      */
-    public function setOffset($offset)
+    public function findByIds(array $ids)
     {
-        $this->offset = $offset;
-
-        return $this;
+        return $this->repository->findByIds($ids);
     }
 
     /**
-     * @param string               $eventName
-     * @param \FDevs\Tag\Model\Tag $tag
+     * @param string       $eventName
+     * @param TagInterface $tag
      *
      * @return $this
      */
-    protected function dispatch($eventName, Tag $tag)
+    protected function dispatch($eventName, TagInterface $tag)
     {
         if ($this->dispatcher) {
             $this->dispatcher->dispatch($eventName, new TagEvent($tag));
@@ -217,5 +218,25 @@ class TagManager implements TagManagerInterface
         $tag->setId($slug.'~'.crc32($tag->getType()))->setSlug($slug);
 
         return $tag;
+    }
+
+    /**
+     * @param int|null $limit
+     *
+     * @deprecated since 1.2
+     */
+    public function setLimit($limit)
+    {
+        $this->limit = $limit;
+    }
+
+    /**
+     * @param int|null $offset
+     *
+     * @deprecated since 1.2
+     */
+    public function setOffset($offset)
+    {
+        $this->offset = $offset;
     }
 }

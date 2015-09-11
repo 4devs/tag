@@ -2,6 +2,7 @@
 namespace FDevs\Tag;
 
 use Doctrine\Common\Collections\Collection;
+use FDevs\Tag\Exception\NotFoundException;
 
 interface TagManagerInterface
 {
@@ -22,7 +23,7 @@ interface TagManagerInterface
     public function setDefaultCriteria(array $criteria = []);
 
     /**
-     * find Tag By Id
+     * get Tag By Id
      *
      * @param string $id
      *
@@ -34,10 +35,33 @@ interface TagManagerInterface
      * find tags by array criteria
      *
      * @param array $criteria
+     * @param int   $limit
+     * @param int   $offset
      *
      * @return array|Collection|TagInterface[]
      */
-    public function findBy(array $criteria = []);
+    public function findBy(array $criteria = [], $limit = 10, $offset = 0);
+
+    /**
+     * find one by slug and type
+     *
+     * @param string $slug
+     * @param string $type
+     *
+     * @return TagInterface
+     *
+     * @throws NotFoundException
+     */
+    public function getBySlugAndType($slug, $type);
+
+    /**
+     * find Tags by array ids
+     *
+     * @param array $ids
+     *
+     * @return array|Collection|TagInterface[]
+     */
+    public function findByIds(array $ids);
 
     /**
      * get Class tag
@@ -70,22 +94,4 @@ interface TagManagerInterface
      * @return array|Collection|TagInterface[]
      */
     public function findTags();
-
-    /**
-     * set Limit
-     *
-     * @param int|null $limit
-     *
-     * @return self
-     */
-    public function setLimit($limit);
-
-    /**
-     * set offset
-     *
-     * @param int|null $offset
-     *
-     * @return self
-     */
-    public function setOffset($offset);
 }
