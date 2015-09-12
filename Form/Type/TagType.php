@@ -28,6 +28,7 @@ class TagType extends AbstractType
         $builder
             ->add('type', 'choice', ['choices' => $options['type_list']])
             ->add('name', 'trans_text')
+            ->add('description', 'trans_textarea', ['required' => false])
             ->add('slug', 'text', ['required' => false])
             ->addEventSubscriber(new SlugFormSubscriber());
     }
