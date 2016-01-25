@@ -70,4 +70,11 @@ interface TagInterface
      * @return string
      */
     public function getType();
+
+    /**
+     * get name
+     *
+     * @return array|Collection|LocaleTextInterface[]
+     */
+    public function getDescription();
 }
