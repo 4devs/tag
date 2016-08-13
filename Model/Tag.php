@@ -26,7 +26,7 @@ class Tag implements TagInterface
     protected $type;
 
     /**
-     * init
+     * init.
      */
     public function __construct()
     {
@@ -43,7 +43,7 @@ class Tag implements TagInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function setId($id)
     {
@@ -75,7 +75,7 @@ class Tag implements TagInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function addName(LocaleTextInterface $text)
     {
@@ -122,7 +122,7 @@ class Tag implements TagInterface
     }
 
     /**
-     * Remove name
+     * Remove name.
      *
      * @param LocaleTextInterface $name
      */
@@ -140,7 +140,7 @@ class Tag implements TagInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function setType($type)
     {
@@ -158,7 +158,7 @@ class Tag implements TagInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function setSlug($slug)
     {

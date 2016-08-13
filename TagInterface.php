@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\Collection;
 interface TagInterface
 {
     /**
-     * set Id
+     * set Id.
      *
      * @param string $id
      *
@@ -17,14 +17,14 @@ interface TagInterface
     public function setId($id);
 
     /**
-     * get Id
+     * get Id.
      *
      * @return string
      */
     public function getId();
 
     /**
-     * add Name
+     * add Name.
      *
      * @param LocaleTextInterface $name
      *
@@ -33,14 +33,14 @@ interface TagInterface
     public function addName(LocaleTextInterface $name);
 
     /**
-     * get name
+     * get name.
      *
      * @return array|Collection|LocaleTextInterface[]
      */
     public function getName();
 
     /**
-     * set Tag Slug
+     * set Tag Slug.
      *
      * @param string $slug
      *
@@ -49,14 +49,14 @@ interface TagInterface
     public function setSlug($slug);
 
     /**
-     * get Tag Slug
+     * get Tag Slug.
      *
      * @return string
      */
     public function getSlug();
 
     /**
-     * set Tag Type
+     * set Tag Type.
      *
      * @param string $type
      *
@@ -65,14 +65,14 @@ interface TagInterface
     public function setType($type);
 
     /**
-     * get Type
+     * get Type.
      *
      * @return string
      */
     public function getType();
 
     /**
-     * get name
+     * get name.
      *
      * @return array|Collection|LocaleTextInterface[]
      */

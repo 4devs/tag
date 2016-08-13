@@ -8,7 +8,7 @@ use FDevs\Tag\Doctrine\TagRepositoryInterface;
 class TagRepository extends DocumentRepository implements TagRepositoryInterface
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function findByIds(array $ids = [])
     {

@@ -36,7 +36,7 @@ class TagManager implements TagManagerInterface
     private $criteria = [];
 
     /**
-     * init
+     * init.
      *
      * @param \Doctrine\Common\Persistence\ObjectManager $objectManager
      * @param TagRepositoryInterface                     $repository
@@ -50,7 +50,7 @@ class TagManager implements TagManagerInterface
     }
 
     /**
-     * @param boolean $flush
+     * @param bool $flush
      *
      * @return self
      */
@@ -62,7 +62,7 @@ class TagManager implements TagManagerInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getClass()
     {
@@ -70,7 +70,7 @@ class TagManager implements TagManagerInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function find($id)
     {
@@ -78,20 +78,20 @@ class TagManager implements TagManagerInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function createTag()
     {
         $class = $this->getClass();
         $tag = new $class();
-        /** @var TagInterface $tag */
+        /* @var TagInterface $tag */
         $this->dispatch(Events::TAG_CREATE, $tag);
 
         return $tag;
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function updateTag(TagInterface $tag)
     {
@@ -110,7 +110,7 @@ class TagManager implements TagManagerInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function removeTag(TagInterface $tag)
     {
@@ -126,7 +126,7 @@ class TagManager implements TagManagerInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function setDefaultCriteria(array $criteria = [])
     {
@@ -136,7 +136,7 @@ class TagManager implements TagManagerInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function findBy(array $criteria = [], $limit = 10, $offset = 0)
     {
@@ -149,7 +149,7 @@ class TagManager implements TagManagerInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function findTags()
     {
@@ -157,7 +157,7 @@ class TagManager implements TagManagerInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getBySlugAndType($slug, $type)
     {
@@ -170,7 +170,7 @@ class TagManager implements TagManagerInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function findByIds(array $ids)
     {
@@ -205,7 +205,7 @@ class TagManager implements TagManagerInterface
     }
 
     /**
-     * refresh tag
+     * refresh tag.
      *
      * @param \FDevs\Tag\TagInterface $tag
      * @param string                  $name

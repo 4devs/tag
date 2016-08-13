@@ -11,7 +11,7 @@ use Symfony\Component\Form\FormEvents;
 class SlugFormSubscriber implements EventSubscriberInterface
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public static function getSubscribedEvents()
     {
@@ -19,7 +19,7 @@ class SlugFormSubscriber implements EventSubscriberInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function submitData(FormEvent $event)
     {

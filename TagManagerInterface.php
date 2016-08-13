@@ -1,4 +1,5 @@
 <?php
+
 namespace FDevs\Tag;
 
 use Doctrine\Common\Collections\Collection;
@@ -7,14 +8,14 @@ use FDevs\Tag\Exception\NotFoundException;
 interface TagManagerInterface
 {
     /**
-     * create Tag
+     * create Tag.
      *
      * @return TagInterface
      */
     public function createTag();
 
     /**
-     * set Base Criteria
+     * set Base Criteria.
      *
      * @param array $criteria
      *
@@ -23,7 +24,7 @@ interface TagManagerInterface
     public function setDefaultCriteria(array $criteria = []);
 
     /**
-     * get Tag By Id
+     * get Tag By Id.
      *
      * @param string $id
      *
@@ -32,7 +33,7 @@ interface TagManagerInterface
     public function find($id);
 
     /**
-     * find tags by array criteria
+     * find tags by array criteria.
      *
      * @param array $criteria
      * @param int   $limit
@@ -43,7 +44,7 @@ interface TagManagerInterface
     public function findBy(array $criteria = [], $limit = 10, $offset = 0);
 
     /**
-     * find one by slug and type
+     * find one by slug and type.
      *
      * @param string $slug
      * @param string $type
@@ -55,7 +56,7 @@ interface TagManagerInterface
     public function getBySlugAndType($slug, $type);
 
     /**
-     * find Tags by array ids
+     * find Tags by array ids.
      *
      * @param array $ids
      *
@@ -64,14 +65,14 @@ interface TagManagerInterface
     public function findByIds(array $ids);
 
     /**
-     * get Class tag
+     * get Class tag.
      *
      * @return string
      */
     public function getClass();
 
     /**
-     * update Tag
+     * update Tag.
      *
      * @param \FDevs\Tag\TagInterface $tag
      *
@@ -80,7 +81,7 @@ interface TagManagerInterface
     public function updateTag(TagInterface $tag);
 
     /**
-     * delete Tag
+     * delete Tag.
      *
      * @param \FDevs\Tag\TagInterface $tag
      *
@@ -89,7 +90,7 @@ interface TagManagerInterface
     public function removeTag(TagInterface $tag);
 
     /**
-     * get All Tags
+     * get All Tags.
      *
      * @return array|Collection|TagInterface[]
      */
