@@ -3,8 +3,10 @@
     "license": "MIT",
     "type": "library",
     "description": "library for working with tag",
-    "homepage": "https://github.com/4devs/Tag",
-    "keywords": ["tag"],
+    "homepage": "https://github.com/4devs/tag",
+    "keywords": [
+        "tag"
+    ],
     "authors": [
         {
             "name": "4devs company",
@@ -17,12 +19,18 @@
         },
         {
             "name": "4devs Community",
-            "homepage": "https://github.com/4devs/Tag/contributors"
+            "homepage": "https://github.com/4devs/tag/contributors"
         }
     ],
-    "require-dev": {},
+    "require-dev": {
+        "twig/twig": "~1.24",
+        "symfony/form": "~2.8|~3.0",
+        "symfony/twig-bridge": "~2.8|~3.0",
+        "symfony/validator": "~2.8|~3.0",
+        "cocur/slugify": "~2.3"
+    },
     "require": {
-        "php": ">=5.4",
+        "php": ">=5.5",
         "doctrine/collections": "~1.2",
         "fdevs/locale": "~2.0"
     },
@@ -35,6 +43,8 @@
         "twig/twig": "use with twig"
     },
     "autoload": {
-        "psr-4": {"FDevs\\Tag\\": ""}
+        "psr-4": {
+            "FDevs\\Tag\\": ""
+        }
     }
 }

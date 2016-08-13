@@ -161,7 +161,7 @@ $formFactory = Forms::createFormFactoryBuilder()
 
 
 $form = $formFactory->createBuilder()
-    ->add('tag', 'fdevs_tag')
+    ->add('tag', TagType::class)
     ->getForm();
 
 echo $twig->createTemplate('{{form(form)}}')->render(['form' => $form->createView()]);
